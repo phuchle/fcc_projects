@@ -1,0 +1,36 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  background-color: #280308;
+  font-family: 'Open Sans', sans-serif;
+}
+.container-fluid {
+  width: 50%;
+  position: relative;
+  margin-top: 10%;
+}
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+#getQuote {
+  margin: 0 auto;
+}
+#quote, h1 {
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 50px;
+}
+.quote-container {
+  background-color: #FFF;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 60px 30px;
+}
+#controls a i {
+  vertical-align: middle;
+}
+.credit {
+  color: #FFF;
+}
