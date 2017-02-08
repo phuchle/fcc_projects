@@ -12,18 +12,21 @@
     <link rel="stylesheet" href="css/master.css">
   </head>
   <body>
-    <p>It is currently
-      <span id="temp"></span>
-      in
-      <span id="location"></span>
-      .
-    </p>
-    <p>
-      You can expect
-      <span id="description"></span>
-      .
-    </p>
-    <div><img id="weather-icon" src="" alt=""></div>
-    <button class="btn" name="button" onclick="toggleTemperature()">Convert Temperature</button>
+    <div id="weather-container">
+      <div id="inner-container" class="text-center section">
+        <h1>Lowdown on Local Weather</h1>
+        <p>It is currently
+          <span id="temp"></span>
+          in
+          <span id="location"></span>
+        </p>
+        <p>
+          You can expect
+          <span id="description"></span>
+        </p>
+        <img class="img-responsive" id="weather-icon" src="" alt="">
+        <button class="btn" name="button" onclick="toggleTemperature()">Convert Temperature</button>
+      </div>
+    </div>
   </body>
 </html>

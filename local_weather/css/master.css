@@ -1,0 +1,18 @@
+#weather-container {
+  background-color: #333;
+  height: 100vh;
+	display: flex;
+  justify-content: center;
+	align-items: center;
+}
+
+#inner-container {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #FFFFFF;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
