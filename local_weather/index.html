@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Your Local Weather by Phuc Le</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="js/script.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/master.css">
+  </head>
+  <body>
+    <p>It is currently
+      <span id="temp"></span>
+      in
+      <span id="location"></span>
+      .
+    </p>
+    <p>
+      You can expect
+      <span id="description"></span>
+      .
+    </p>
+    <div><img id="weather-icon" src="" alt=""></div>
+    <button class="btn" name="button" onclick="toggleTemperature()">Convert Temperature</button>
+  </body>
+</html>
