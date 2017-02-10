@@ -16,3 +16,15 @@
   justify-content: center;
   align-items: center;
 }
+
+#wunderground-logo {
+  width: 150px;
+  height: auto;
+}
+
+#footer {
+  color: white;
+  font-size: .8em;
+  position: fixed;
+  bottom: 0;
+}
