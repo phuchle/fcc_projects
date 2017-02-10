@@ -19,9 +19,10 @@ function successfulLocation(position) {
 function getWeather(coords)  {
   var latitude = coords[0];
   var longitude = coords[1];
-  var apiKey = "fbbc04106f66a90adfc6b9c9b3fac31e";
-  var url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude
-            + "&lon=" + longitude + "&APPID=" + apiKey;
+  var apiKey = "42f4920aa9b57161";
+  var url = "https://api.wunderground.com/api/" + apiKey + "/conditions/q/"
+            + latitude + "," + longitude
+            +".json";
 
   $.getJSON(url, function(response) {
     showTemperature(response);
@@ -32,21 +33,24 @@ function getWeather(coords)  {
 }
 
 function showTemperature(APIresponse) {
-  var temperatureCelsius = Math.round(APIresponse.main["temp"] - 273.15);
+  var temperatureCelsius = Math.round(APIresponse.current_observation.temp_c);
+  var realFeelTemp = Math.round(APIresponse.current_observation.feelslike_c)
   document.getElementById('temp').innerHTML = temperatureCelsius + "°C";
+  document.getElementById('real-feel-temp').innerHTML = realFeelTemp + "°C";
 }
 
 function showCurrentCity(APIresponse) {
-  document.getElementById('location').innerHTML = APIresponse.name;
+  var city = APIresponse.current_observation.display_location.city;
+  document.getElementById('location').innerHTML = city;
 }
 
 function showWeatherDescription(APIresponse) {
-  document.getElementById('description').innerHTML = APIresponse.weather[0]["description"];
+  var description = APIresponse.current_observation.weather;
+  document.getElementById('description').innerHTML = description.toLowerCase();
 }
 
 function showWeatherIcon(APIresponse) {
-  var icon = APIresponse.weather[0].icon;
-  var iconURL = "https://openweathermap.org/img/w/" + icon + ".png";
+  var iconURL = APIresponse.current_observation.icon_url;
   var img = document.getElementById('weather-icon');
   img.src = iconURL;
 }
@@ -55,8 +59,10 @@ function toggleTemperature() {
   var temp = document.getElementById('temp').innerHTML;
   if (temp.includes("C")) {
     document.getElementById('temp').innerHTML = toFahrenheit(temp);
+    document.getElementById('real-feel-temp').innerHTML = toFahrenheit(temp);
   } else {
     document.getElementById('temp').innerHTML = toCelsius(temp);
+    document.getElementById('real-feel-temp').innerHTML = toCelsius(temp);
   }
 }
 
