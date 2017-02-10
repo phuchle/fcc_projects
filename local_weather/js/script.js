@@ -1,7 +1,3 @@
-// get user location
-// have different icons/images depending on weather > included in API rsponse
-// toggle between F and C
-
 function getUserLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
