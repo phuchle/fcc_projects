@@ -20,7 +20,7 @@ function getWeather(coords)  {
   var latitude = coords[0];
   var longitude = coords[1];
   var apiKey = "fbbc04106f66a90adfc6b9c9b3fac31e";
-  var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude
+  var url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude
             + "&lon=" + longitude + "&APPID=" + apiKey;
 
   $.getJSON(url, function(response) {
@@ -46,7 +46,7 @@ function showWeatherDescription(APIresponse) {
 
 function showWeatherIcon(APIresponse) {
   var icon = APIresponse.weather[0].icon;
-  var iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+  var iconURL = "https://openweathermap.org/img/w/" + icon + ".png";
   var img = document.getElementById('weather-icon');
   img.src = iconURL;
 }
