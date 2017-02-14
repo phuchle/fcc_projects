@@ -1,0 +1,22 @@
+html, body {
+  height: 100%
+}
+
+#outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #0a775f;
+}
+
+#inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  background-color: #f2f2f2;
+  min-height: 400px;
+  padding: 50px;
+  border-radius: 5px;
+}
