@@ -22,10 +22,23 @@ function showResults(response) {
   var descriptionArr = response[2];
   var hyperlinkArr = response[3];
   var resultContainer = document.getElementById('results');
+  var innerContainer = document.getElementById('inner-container');
+
+  innerContainer.style.alignSelf = "flex-start";
+  resultContainer.innerHTML = "";
 
   for (var i = 0; i < titleArr.length; i++) {
     var newDiv = document.createElement("div");
-    newDiv.innerHTML = titleArr.shift();
+    var hyperlink = document.createElement("a");
+    var title = document.createElement("h3");
+    var description = document.createElement("p");
+
+    hyperlink.href = hyperlinkArr[i];
+    title.textContent = titleArr[i];
+    description.textContent = descriptionArr[i];
+    hyperlink.appendChild(title);
+    hyperlink.appendChild(description);
+    newDiv.appendChild(hyperlink);
     resultContainer.appendChild(newDiv);
   }
 }

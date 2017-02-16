@@ -2,12 +2,16 @@ html, body {
   height: 100%
 }
 
+body {
+  background-color: #0a775f;
+}
+
 #outer-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: #0a775f;
+  padding-top: 50px;
 }
 
 #inner-container {
@@ -19,4 +23,14 @@ html, body {
   min-height: 400px;
   padding: 50px;
   border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+#results a p, #results a:hover {
+  color: #292b2c;
+  text-decoration: none;
+}
+
+#results div {
+padding: 10px 0 10px 0;
 }
