@@ -1,6 +1,6 @@
 function searchWikipedia() {
   var searchTerm = document.getElementById("searchInput").value;
-  var url = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + searchTerm;
+  var url = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + searchTerm + "&callback=?";
 
   $.getJSON(url, function(response) {
     showResults(response);
