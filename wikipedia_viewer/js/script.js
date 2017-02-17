@@ -46,3 +46,9 @@ function showResults(response) {
 document.addEventListener('DOMContentLoaded', function() {
   detectEnterKeyDown();
 });
+
+$(document).ready(function(){
+  $('#go').on("click", function(){
+    searchWikipedia();
+  });
+});
