@@ -1,0 +1,37 @@
+body {
+  background-color: black;
+}
+
+#outer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+#inner-container {
+  display: flex;
+  align-items: center;
+  /*justify-content: center;*/
+  flex-direction: column;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  height: 300px;
+  padding: 20px;
+}
+
+#inner-container p {
+
+}
+
+#inner-container h1 {
+  color: purple;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  /*justify-content: space-between;*/
+  align-items: space-between;
+}
