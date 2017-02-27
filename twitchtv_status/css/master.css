@@ -4,10 +4,10 @@ body {
 
 #outer-container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     height: 100vh;
-
+    padding-top: 50px;
 }
 
 #inner-container {
@@ -17,8 +17,9 @@ body {
   flex-direction: column;
   background-color: #f2f2f2;
   border-radius: 5px;
-  height: 300px;
+  min-height: 300px;
   padding: 20px;
+  margin-bottom: 50px;
 }
 
 #inner-container p {
@@ -34,4 +35,15 @@ body {
   flex-direction: column;
   /*justify-content: space-between;*/
   align-items: space-between;
+}
+
+#twitch-channels li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  background-color: #333333;
 }

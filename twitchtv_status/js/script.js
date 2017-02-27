@@ -1,50 +1,78 @@
-function getStreamStatus(name = "freecodecamp") {
-  var streamers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
-  var url =
-  "https://wind-bow.gomix.me/twitch-api/streams/" + name;
-  $.getJSON(url, function(response) {
-    return response.stream == "null" ? "offline" : "online";
+// returns object
+function getStreamInfo() {
+  var users = ["ESL_SC2", "cretetion", "freecodecamp", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404", "gronkh", "sacriel"];
+
+  users.forEach(user => {
+    var streamInfo = {};
+    var url = "https://wind-bow.gomix.me/twitch-api/streams/" + user+ "?callback=?";
+
+    $.getJSON(url, data => {
+      if (data.stream === null) {
+        if (channelExists(user) === true) {
+          streamInfo["channelStatus"] = "offline";
+          streamInfo["exists"] = channelExists(user);
+        }
+        else {
+          streamInfo["channelStatus"] = "Channel does not exist."
+        }
+      }
+      else {
+        streamInfo["channelStatus"]  = data.stream.channel.status;
+        streamInfo["url"] =  data.stream.channel.url;
+        streamInfo["logo"] = data.stream.channel.logo;
+      }
+
+      streamInfo["user"] = user;
+      showStreamInfo(streamInfo);
+    });
+
   });
 }
 
-// returns object with info
-function getChannelInfo(name = "freecodecamp") {
-  var url = "https://wind-bow.gomix.me/twitch-api/channels/" + name;
-  var channelInfo = {};
-  $.getJSON(url, function(response) {
-    channelInfo["url"] = response.url;
-    channelInfo["name"] = response.display_name;
-    channelInfo["logo"] = response.logo;
+// helper function that returns true if channel exists
+function channelExists(name) {
+  var url = "https://wind-bow.gomix.me/twitch-api/channels/" + name + "?callback=?";
+  var channelInfo;
+  $.getJSON(url, response => {
+    channelInfo = response.status !== 404;
   });
   return channelInfo;
 }
 
-function detectEnterKeyDown() {
-  var searchInput = document.getElementById("searchInput");
-  searchInput.addEventListener("keydown", function(e) {
-    if (e.keyCode === 13) {
-      showStreamInfo(searchInput.value);
-    }
-  });
-}
+// creates elements
+function showStreamInfo(info) {
+  var container = document.getElementById('twitch-channels');
+  var channelStatus = info.channelStatus;
+  var list = document.createElement("li");
+  list.class = channelStatus.replace(/\s+/g, "-");
+  var user = info.user;
+  var url = info.url;
+  var game = info.game;
+  var logo_url = info.logo;
 
-function showStreamInfo(name = "freecodecamp") {
-  var stream = getChannelInfo(name);
-  var status = getStreamStatus(name);
-  if (stream.name == undefined) {
-    var noUser = "<h4>The account could not be found and may be closed.</h4>";
-    $("#twitch-status").html(noUser);
-  }
-  else if (status == "online") {
-    console.log('online');
-  }
-  else if (status == "offline") {
-    console.log('online');
-  }
+  // make logo img
+  var logo = document.createElement("img");
+  logo_url === undefined ? "" : logo.src = logo_url;
+  logo.setAttribute("class", "logo");
+
+  // make link to user's channel
+  var link = document.createElement("a");
+  url === undefined ? "" : link.href = url;
+  link.innerText = user;
+
+  // make description
+  var description = document.createElement("p");
+  description.innerText = channelStatus;
+
+
+  // append the info to list item
+  list.append(logo);
+  list.append(link);
+  list.append(description);
+
+  container.append(list);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  //do work
-  showStreamInfo();
-  detectEnterKeyDown();
+  getStreamInfo();
 });
