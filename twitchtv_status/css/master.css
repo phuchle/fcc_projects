@@ -37,9 +37,24 @@ body {
   align-items: space-between;
 }
 
+ul {
+  padding: 0;
+}
+
+#twitch-channels li p {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 #twitch-channels li {
   text-decoration: none;
   list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {

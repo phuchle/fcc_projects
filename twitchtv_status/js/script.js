@@ -8,14 +8,17 @@ function getStreamInfo() {
 
     $.getJSON(url, data => {
       if (data.stream === null) {
-        if (channelExists(user) === true) {
-          streamInfo["channelStatus"] = "offline";
-          streamInfo["exists"] = channelExists(user);
-        }
-        else {
-          streamInfo["channelStatus"] = "Channel does not exist."
-        }
+        streamInfo["channelStatus"] = "offline";
+        streamInfo["exists"] = channelExists(user);
       }
+    // $.getJSON(url, data => {
+    //   if (data.stream === null && channelExists(user) === true) {
+    //     streamInfo["channelStatus"] = "offline";
+    //     streamInfo["exists"] = channelExists(user);
+    //   }
+      // else if (data.stream === null && channelExists(user) === false) {
+      //   streamInfo["channelStatus"] = "Channel does not exist.";
+      // }
       else {
         streamInfo["channelStatus"]  = data.stream.channel.status;
         streamInfo["url"] =  data.stream.channel.url;
@@ -35,8 +38,8 @@ function channelExists(name) {
   var channelInfo;
   $.getJSON(url, response => {
     channelInfo = response.status !== 404;
+    return channelInfo;
   });
-  return channelInfo;
 }
 
 // creates elements
