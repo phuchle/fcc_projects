@@ -1,6 +1,6 @@
 // returns object
 function getStreamInfo() {
-  var users = ["ESL_SC2", "cretetion", "freecodecamp", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404", "gronkh", "sacriel"];
+  var users = ["ESL_SC2", "ESL_Overwatch", "freecodecamp", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404", "gronkh", "sacriel"];
 
   users.forEach(user => {
     var streamInfo = {};
@@ -9,18 +9,12 @@ function getStreamInfo() {
     $.getJSON(url, data => {
       if (data.stream === null) {
         streamInfo["channelStatus"] = "offline";
-        streamInfo["exists"] = channelExists(user);
+        streamInfo["channelDescription"] = "offline";
       }
-    // $.getJSON(url, data => {
-    //   if (data.stream === null && channelExists(user) === true) {
-    //     streamInfo["channelStatus"] = "offline";
-    //     streamInfo["exists"] = channelExists(user);
-    //   }
-      // else if (data.stream === null && channelExists(user) === false) {
-      //   streamInfo["channelStatus"] = "Channel does not exist.";
-      // }
+
       else {
-        streamInfo["channelStatus"]  = data.stream.channel.status;
+        streamInfo["channelStatus"]  = "online";
+        streamInfo["channelDescription"]  = data.stream.channel.status;
         streamInfo["url"] =  data.stream.channel.url;
         streamInfo["logo"] = data.stream.channel.logo;
       }
@@ -32,26 +26,33 @@ function getStreamInfo() {
   });
 }
 
-// helper function that returns true if channel exists
-function channelExists(name) {
-  var url = "https://wind-bow.gomix.me/twitch-api/channels/" + name + "?callback=?";
-  var channelInfo;
+// helper function that changes channel status if account is closed
+function channelExists(userToCheck) {
+  var channelStillExists;
+  var url = "https://wind-bow.gomix.me/twitch-api/channels/" + userToCheck + "?callback=?";
+  var tempStatus = document.getElementById(userToCheck + "Description");
+
   $.getJSON(url, response => {
-    channelInfo = response.status !== 404;
-    return channelInfo;
+     channelStillExists = response.status !== 404;
+    if (channelStillExists === false) {
+      tempStatus.innerText = "Channel is closed";
+    }
   });
+
 }
 
 // creates elements
 function showStreamInfo(info) {
   var container = document.getElementById('twitch-channels');
   var channelStatus = info.channelStatus;
-  var list = document.createElement("li");
-  list.class = channelStatus.replace(/\s+/g, "-");
+  var channelDescription = info.channelDescription;
   var user = info.user;
   var url = info.url;
   var game = info.game;
   var logo_url = info.logo;
+  var list = document.createElement("li");
+  list.class = channelStatus.replace(/\s+/g, "-");
+  list.id = channelStatus;
 
   // make logo img
   var logo = document.createElement("img");
@@ -65,8 +66,8 @@ function showStreamInfo(info) {
 
   // make description
   var description = document.createElement("p");
-  description.innerText = channelStatus;
-
+  description.innerText = channelDescription;
+  description.id = user + "Description";
 
   // append the info to list item
   list.append(logo);
@@ -74,6 +75,7 @@ function showStreamInfo(info) {
   list.append(description);
 
   container.append(list);
+  channelExists(user);
 }
 
 document.addEventListener("DOMContentLoaded", function() {

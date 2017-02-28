@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1">
     <title>Which Twitch?</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
@@ -13,8 +14,10 @@
   <body>
     <div id="outer-container" class="row">
       <div id="inner-container" class="container">
-        <h1>Which Twitch?</h1>
-        <p class="small">A Twitch stream status viewer</p>
+        <div id="title-container">
+          <h1>Which Twitch?</h1>
+          <p class="small">A Twitch stream status viewer</p>
+        </div>
         <div id="main" class="col-md-12">
           <ul id="twitch-channels"></div>
         </div>

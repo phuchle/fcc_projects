@@ -12,8 +12,6 @@ body {
 
 #inner-container {
   display: flex;
-  align-items: center;
-  /*justify-content: center;*/
   flex-direction: column;
   background-color: #f2f2f2;
   border-radius: 5px;
@@ -22,8 +20,8 @@ body {
   margin-bottom: 50px;
 }
 
-#inner-container p {
-
+#title-container {
+  border-bottom: 5px solid #333333;
 }
 
 #inner-container h1 {
@@ -31,14 +29,18 @@ body {
 }
 
 #main {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  /*justify-content: space-between;*/
   align-items: space-between;
 }
 
 ul {
   padding: 0;
+}
+
+#online {
+  background-color: #C4FFC4;
 }
 
 #twitch-channels li p {
