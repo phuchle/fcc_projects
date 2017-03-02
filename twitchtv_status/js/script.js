@@ -51,8 +51,8 @@ function showStreamInfo(info) {
   var game = info.game;
   var logo_url = info.logo;
   var list = document.createElement("li");
-  list.class = channelStatus.replace(/\s+/g, "-");
-  list.id = channelStatus;
+  // list.class = channelStatus.replace(/\s+/g, "-");
+  list.setAttribute("class", channelStatus);
 
   // make logo img
   var logo = document.createElement("img");

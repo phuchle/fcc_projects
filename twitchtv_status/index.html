@@ -14,16 +14,42 @@
   <body>
     <div id="outer-container" class="row">
       <div id="inner-container" class="container">
-        <div id="title-container">
-          <h1>Which Twitch?</h1>
-          <p class="small">A Twitch stream status viewer</p>
+
+        <div id="header-container" class="row">
+
+          <div id="title-container">
+            <h1>Which Twitch?</h1>
+            <p class="small">A Twitch stream status viewer</p>
+          </div>
+
+          <div id="filters">
+            <div class="selector active" id="all-channels">
+              <div class="circle"></div>
+              <p>
+                All
+              </p>
+            </div>
+            <div class="selector" id="online-channels">
+              <div class="circle"></div>
+              <p>
+                Online
+              </p>
+            </div>
+            <div class="selector" id="offline-channels">
+              <div class="circle"></div>
+              <p>
+                Offline
+              </p>
+            </div>
+          </div>
         </div>
+
         <div id="main" class="col-md-12">
           <ul id="twitch-channels"></div>
         </div>
-      </div>
 
-    </div>
+      </div> <!-- inner-container -->
+    </div> <!-- outer-container -->
 
   </body>
 </html>
