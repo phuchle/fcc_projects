@@ -80,4 +80,20 @@ function showStreamInfo(info) {
 
 document.addEventListener("DOMContentLoaded", function() {
   getStreamInfo();
+  $(".selector").click(function(){
+    $(".selector").removeClass("active");
+    $(this).addClass("active");
+    var channelStatus = $(this).attr("id");
+    if (channelStatus == "all-filter") {
+      $(".online, .offline").show();
+    }
+    else if (channelStatus == "online-filter") {
+      $(".online").show();
+      $(".offline").hide();
+    }
+    else if (channelStatus == "offline-filter") {
+      $(".offline").show();
+      $(".online").hide();
+    }
+  });
 });

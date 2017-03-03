@@ -40,10 +40,6 @@ body {
   overflow: hidden;
 }
 
-.active {
-  width: 100px !important;
-}
-
 .selector {
   background-color: #b3b3b3;
   border: 1px solid white;
@@ -58,7 +54,7 @@ body {
   transition: width 0.4s linear;
 }
 
-.selector:hover {
+.active, .selector:hover {
   width: 100px !important;
   -webkit-transition: width 0.4s linear;
   transition: width 0.4s linear;
@@ -74,10 +70,10 @@ body {
   margin: 5px 5px 5px 0px;
 }
 
-#all-channels .circle {
+#all-filter .circle {
   background-color: #000000;
 }
-#online-channels .circle {
+#online-filter .circle {
   background-color: #C4FFC4;
 }
 
